@@ -52,9 +52,9 @@ public class AddSbuTest extends BaseTest {
 			SBUNameHeading = false;
 		}
 		if (SBUNameHeading) {
-			testCase.log(Status.PASS, "Showing SBU Heading");
+			testCase.log(Status.PASS, "SBU name Heading");
 		} else {
-			testCase.log(Status.FAIL, "Unable to find SBU Form Heading");
+			testCase.log(Status.FAIL, "Unable to find SBU name Heading");
 
 		}
 		Thread.sleep(1000);
@@ -68,9 +68,9 @@ public class AddSbuTest extends BaseTest {
 			SBUDescriptionHeading = false;
 		}
 		if (SBUDescriptionHeading) {
-			testCase.log(Status.PASS, "Showing SBU Heading");
+			testCase.log(Status.PASS, "Showing SBU Description Heading");
 		} else {
-			testCase.log(Status.FAIL, "Unable to find SBU Form Heading");
+			testCase.log(Status.FAIL, "Unable to find SBU Description Heading");
 
 		}
 		Thread.sleep(1000);
@@ -84,9 +84,9 @@ public class AddSbuTest extends BaseTest {
 			SBUNameTextBox = false;
 		}
 		if (SBUNameTextBox) {
-			testCase.log(Status.PASS, "Showing SBU Heading");
+			testCase.log(Status.PASS, "Showing SBU Name TextBox");
 		} else {
-			testCase.log(Status.FAIL, "Unable to find SBU Form Heading");
+			testCase.log(Status.FAIL, "Unable to find SBU Name TextBox");
 
 		}
 		Thread.sleep(1000);
@@ -95,14 +95,14 @@ public class AddSbuTest extends BaseTest {
 		boolean SBUDescriptionTextBox = true;
 		testCase = extent.createTest("SBUDescriptionTextBox");
 		try {
-			Assert.assertEquals(AddSbuPage.SbuDes.isDisplayed(), "Add SBU");
+			Assert.assertEquals(AddSbuPage.SbuDes.isDisplayed(), true);
 		} catch (AssertionError e) {
 			SBUDescriptionTextBox = false;
 		}
 		if (SBUDescriptionTextBox) {
-			testCase.log(Status.PASS, "Showing SBU Heading");
+			testCase.log(Status.PASS, "Showing SBU Description TextBox");
 		} else {
-			testCase.log(Status.FAIL, "Unable to find SBU Form Heading");
+			testCase.log(Status.FAIL, "Unable to find SBU Description TextBox");
 
 		}
 		Thread.sleep(1000);
@@ -111,14 +111,14 @@ public class AddSbuTest extends BaseTest {
 		boolean SaveButton = true;
 		testCase = extent.createTest("SaveButton");
 		try {
-			Assert.assertEquals(AddSbuPage.Submit.isDisplayed(), "Add SBU");
+			Assert.assertEquals(AddSbuPage.Submit.isDisplayed(), true);
 		} catch (AssertionError e) {
 			SaveButton = false;
 		}
 		if (SaveButton) {
-			testCase.log(Status.PASS, "Showing SBU Heading");
+			testCase.log(Status.PASS, "Showing Save Button");
 		} else {
-			testCase.log(Status.FAIL, "Unable to find SBU Form Heading");
+			testCase.log(Status.FAIL, "Unable to find Save Button");
 
 		}
 		Thread.sleep(1000);
@@ -127,14 +127,14 @@ public class AddSbuTest extends BaseTest {
 		boolean CancelButton = true;
 		testCase = extent.createTest("CancelButton");
 		try {
-			Assert.assertEquals(AddSbuPage.CancelSbuBtn.isDisplayed(), "Add SBU");
+			Assert.assertEquals(AddSbuPage.CancelSbuBtn.isDisplayed(), true);
 		} catch (AssertionError e) {
 			CancelButton = false;
 		}
 		if (CancelButton) {
-			testCase.log(Status.PASS, "Showing SBU Heading");
+			testCase.log(Status.PASS, "Showing Cancel Button");
 		} else {
-			testCase.log(Status.FAIL, "Unable to find SBU Form Heading");
+			testCase.log(Status.FAIL, "Unable to find Cancel Button");
 
 		}
 		Thread.sleep(1000);
@@ -143,14 +143,14 @@ public class AddSbuTest extends BaseTest {
 		boolean SaveName = true;
 		testCase = extent.createTest("SaveName");
 		try {
-			Assert.assertEquals(AddSbuPage.Submit.getText(), "Add SBU");
+			Assert.assertEquals(AddSbuPage.Submit.getText(), "Save");
 		} catch (AssertionError e) {
 			SaveName = false;
 		}
 		if (SaveName) {
-			testCase.log(Status.PASS, "Showing SBU Heading");
+			testCase.log(Status.PASS, "Showing Save Name");
 		} else {
-			testCase.log(Status.FAIL, "Unable to find SBU Form Heading");
+			testCase.log(Status.FAIL, "Unable to find Save Name");
 
 		}
 		Thread.sleep(1000);
@@ -159,14 +159,14 @@ public class AddSbuTest extends BaseTest {
 		boolean CancelName = true;
 		testCase = extent.createTest("CancelName");
 		try {
-			Assert.assertEquals(AddSbuPage.CancelSbuBtn.getText(), "Add SBU");
+			Assert.assertEquals(AddSbuPage.CancelSbuBtn.getText(), "Cancel");
 		} catch (AssertionError e) {
 			CancelName = false;
 		}
 		if (CancelName) {
-			testCase.log(Status.PASS, "Showing SBU Heading");
+			testCase.log(Status.PASS, "Showing Cancel Name");
 		} else {
-			testCase.log(Status.FAIL, "Unable to find SBU Form Heading");
+			testCase.log(Status.FAIL, "Unable to find Cancel Name");
 
 		}
 		Thread.sleep(3000);
