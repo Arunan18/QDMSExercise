@@ -19,8 +19,19 @@ import PageBase.AddSbuPage;
 
 public class AddSbuTest extends BaseTest {
 	AddSbuPage addSbupg = new AddSbuPage();
+
 //	SoftAssert sa = new SoftAssert();
-	
+	@Test(priority = 0)
+	public void navigateSBU() throws InterruptedException {
+		PageFactory.initElements(driver, addSbupg);
+		Thread.sleep(2000);
+		AddSbuPage.ClickMasterBtn.click();
+		Thread.sleep(1000);
+		AddSbuPage.ClickSbuBtn.click();
+		Thread.sleep(1000);
+//		AddSbuPage.AddSbuBtn.click(); 
+	}
+
 	@Test(priority = 1)
 	public void addSbuButton() throws InterruptedException {
 		PageFactory.initElements(driver, addSbupg);
@@ -173,17 +184,30 @@ public class AddSbuTest extends BaseTest {
 		if (AddSbuPage.CancelSbuBtn.isDisplayed()) {
 			AddSbuPage.CancelSbuBtn.click();
 
+//			boolean CancelBtnFunction = true;
+//			testCase = extent.createTest("CancelButton");
+//			try {
+//				Assert.assertEquals(AddSbuPage.CancelSbuBtn.isDisplayed(), true);
+//			} catch (AssertionError e) {
+//				CancelBtnFunction = false;
+//			}
+//			if (CancelBtnFunction) {
+//				testCase.log(Status.PASS, " Cancel Button function working");
+//			} else {
+//				testCase.log(Status.FAIL, "Cancel Button function not working");
+//
+//			}
 		}
 		
 	}
 
-	@Test(priority = 0)
+	@Test(priority = 2)
 	public void AddSbuData() throws InterruptedException, IOException {
-		PageFactory.initElements(driver, addSbupg);
-		AddSbuPage.ClickMasterBtn.click();
-		Thread.sleep(3000);
-		AddSbuPage.ClickSbuBtn.click();
-		Thread.sleep(3000);
+//		PageFactory.initElements(driver, addSbupg);
+//		AddSbuPage.ClickMasterBtn.click();
+//		Thread.sleep(3000);
+//		AddSbuPage.ClickSbuBtn.click();
+//		Thread.sleep(3000);
 //		AddSbuPage.AddSbuBtn.click(); 
 		FileInputStream file = new FileInputStream(
 				System.getProperty("user.dir") + "\\src\\test\\java\\Data\\workbook.xlsx");
@@ -209,60 +233,76 @@ public class AddSbuTest extends BaseTest {
 						break;
 					}
 				}
-				if (status == true) {
+				if (status) {
 					System.out.println("Already exist this " + SBU);
 					testCase = extent.createTest("Add SBU");
 					testCase.log(Status.INFO, "Already exist this name :-" + SBU);
 					testCase.log(Status.PASS, "Pass this test script");
 				} else {
-//				Add SBU Form	
 
 //					Add SBU Code
 					Thread.sleep(1000);
 					AddSbuPage.AddSbuBtn.click();
-					testCase = extent.createTest("Add SBU");
-					AddSbuPage.SbuName.sendKeys(SBU);
-					AddSbuPage.SbuDes.sendKeys(Des);
-					AddSbuPage.Submit.click();
 					Thread.sleep(3000);
-//				Checking Cancel button & Function
-					if (AddSbuPage.CancelSbuBtn.isDisplayed()) {
-						AddSbuPage.CancelSbuBtn.click();
-
-					}
-
-//					Checking Added SBU Available or not
-					boolean status1 = false;
-					for (WebElement ele : AddSbuPage.SbuColumn) {
-						String value = ele.getText();
-						Thread.sleep(3000);
-						if (value.contains(SBU)) {
-							status1 = true;
-							break;
-						}
-					}
-//					Checking Expeted result & Actual result are equal or not
-					boolean result = true;
+					boolean SaveButton = true;
+					// testCase = extent.createTest("SaveButton");
 					try {
-						Assert.assertTrue(true);
+						Assert.assertEquals(AddSbuPage.Submit.isDisplayed(), true);
 					} catch (AssertionError e) {
-						result = false;
+						SaveButton = false;
 					}
+					if (SaveButton == true) {
+						testCase = extent.createTest("Add SBU");
+						AddSbuPage.SbuName.sendKeys(SBU);
+						AddSbuPage.SbuDes.sendKeys(Des);
+						AddSbuPage.Submit.click();
+						Thread.sleep(3000);
+//					Checking Cancel button & Function
+						if (AddSbuPage.CancelSbuBtn.isDisplayed()) {
+							AddSbuPage.CancelSbuBtn.click();
 
-					if (result == true) {
-						System.out.println("This " + SBU + " Available in webtable");
-						testCase.log(Status.INFO, "Finded Expected url in SBU Webtable");
-						testCase.log(Status.PASS, "Pass this test script");
+						}
 
-					} else {
-						System.out.println("This " + SBU + " Not available in webtable");
-						testCase.log(Status.INFO, "Unable to find Expected url in SBU Webtable");
-						testCase.log(Status.FAIL, "Fail this test script");
+//						Checking Added SBU Available or not
+						boolean status1 = false;
+						for (WebElement ele : AddSbuPage.SbuColumn) {
+							String value = ele.getText();
+							Thread.sleep(3000);
+							if (value.contains(SBU)) {
+								status1 = true;
+								break;
+							}
+						}
+//						Checking Expeted result & Actual result are equal or not
+						boolean result = true;
+						try {
+							Assert.assertEquals(status1, true);
+						} catch (AssertionError e) {
+							result = false;
+						}
 
+						if (result == true) {
+							System.out.println("This " + SBU + " Available in webtable");
+							testCase.log(Status.INFO, "Finded Expected url in SBU Webtable");
+							testCase.log(Status.PASS, "Pass this test script");
+
+						} else {
+							System.out.println("This " + SBU + " Not available in webtable");
+							testCase.log(Status.INFO, "Unable to find Expected url in SBU Webtable");
+							testCase.log(Status.FAIL, "Fail this test script");
+
+						}
+					} 
+					else {
+						System.out.println("Unable to find Save Button");
+						testCase = extent.createTest("Save Button");
+						testCase.log(Status.FAIL, "Don't have save button, so smoke fail");
 					}
 
 				}
+
 			}
+
 		}
 	}
 }
